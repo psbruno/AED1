@@ -1,230 +1,106 @@
 #include <stdio.h>
-
 #include <stdlib.h>
 
-
-
 typedef struct{
-
     int Valor;
-
     int chave;
-
     struct No *Pai;
-
     struct No *fEsq;
-
     struct No *fDir;
-
 }No;
 
 
 
 No *Novo(int Chave, int valor, No *pai){
-
     No *aux;
-
     aux=(No*)malloc(sizeof(No));
-
     aux->chave=Chave;
-
     aux->Valor=valor;
-
     aux->fEsq=NULL;
-
     aux->fDir=NULL;
-
     aux->Pai=pai;
-
-
-
     return aux;
-
 }
 
 int setapai(No *NoPRem, No *NoPai){
-
     if(NoPRem == NoPai->fDir){
-
             NoPai->fDir=NULL;
-
     }else{
-
            NoPai->fEsq=NULL;
-
     }
-
 }
 
 int Remover(No *NoPRem){//nó para remover
-
     No *aux=NoPRem;
-
     if(NoPRem->fDir==NULL && NoPRem->fEsq==NULL){
-
         setapai(NoPRem, NoPRem->Pai);
-
-        /*if(NoPRem == aux->fDir){
-
-            aux->fDir=NULL;
-
-        }else{
-
-            aux->fEsq=NULL;
-
-        }*/
-
         free(NoPRem);
-
         return 0;
-
     }
-
     if(aux->fDir!=NULL){
-
         aux=NoPRem->fDir;
-
     }
-
-
-
     while(aux->fEsq!=NULL){
-
         aux=aux->fEsq;
-
     }
-
-
-
-    //setapai(NoPRem, NoPRem->Pai);
-
     NoPRem->chave=aux->chave;
-
     NoPRem->Valor=aux->Valor;
-
     NoPRem->fDir=aux->fDir;
-
     NoPRem->fEsq=aux->fEsq;
-
-
-
     free(aux);
-
 }
 
 int proc(int N, No *NoAtual,int i){
-
-
-
-    //printf("NO ATUAL - %d\n", NoAtual->Valor);
-
     if(NoAtual->fDir!=NULL && N>NoAtual->Valor){
-
-        //printf("direita ");
-
         proc(N,NoAtual->fDir,i);
-
     }else if(NoAtual->fDir==NULL && N>NoAtual->Valor){//inserção
-
         NoAtual->fDir=Novo(i,N,NoAtual);
-
     }
-
-
-
     if(NoAtual->fEsq!=NULL && N<NoAtual->Valor){
-
-           // printf("esquerda");
-
         proc(N,NoAtual->fEsq,i);
-
     }else if(NoAtual->fEsq==NULL && N<NoAtual->Valor){//inserção
-
         NoAtual->fEsq=Novo(i,N,NoAtual);
-
     }
-
     if(N == NoAtual->Valor){
-
         Remover(NoAtual);
-
     }
-
-
-
-
-
 }
 void imp(No *Raiz){
-
     if(Raiz->fEsq!=NULL)
         imp(Raiz->fEsq);
    printf("%d ", Raiz->Valor);
-
     if(Raiz->fDir!=NULL)
         imp(Raiz->fDir);
-
-
-
 }
 
 int Altura(No *Raiz, int *altura, int aux,int *tam){
-
-
-
     if(Raiz->fEsq!=NULL)
-
         Altura(Raiz->fEsq,altura,aux+1,tam);
-
     if(Raiz->fDir!=NULL)
-
         Altura(Raiz->fDir,altura,aux+1,tam);
-
     if(aux>=*altura){
-
        *altura=aux;
-
     }
-
     *tam+=1;
-
 }
 
 int main(){
-
     int N,u,tam=0, i=0;
-
     No *Raiz=NULL, *NoP,*NoA;//nó raiz, nó procurado e nó Atual
-
     int altura=0;
-
     scanf("%d", &N);
-
     while(N!=-1){
-
         i++;
-
         if(i==1){
-
             NoA=Novo(i,N,NULL);
-
             Raiz=NoA;
-
         }else{
-
             proc(N,Raiz, i);
-
         }
-
         scanf("%d", &N);
-
     }
- imp(Raiz);
-
-
+    imp(Raiz);
 
     return 0;
-
-
 
 }
