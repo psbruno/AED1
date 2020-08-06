@@ -1,0 +1,51 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct{
+    char Nome[20];
+    char genero[20];
+    int AnoLanc;
+}TJogo;
+
+typedef struct{
+    char nome[20];
+    int idade;
+    int njogos;
+    TJogo *Colecao;
+}TDono;
+
+int main(){
+    TJogo *jogos;
+    TDono *dono;
+    int NumJogos,i;
+    dono=(TDono*)malloc(sizeof(TDono));
+
+
+    printf("insira o nome e a idade do dono da colecao\n");
+    scanf("%s %d", &dono->nome, &dono->idade);
+
+    printf("Insira o numero de jogos \n");
+    scanf("%d", &NumJogos);
+    dono->njogos=NumJogos;
+
+
+    jogos=(TJogo*)malloc(NumJogos*sizeof(TJogo));
+
+    dono->Colecao=jogos;
+
+    for(i=0;i<NumJogos;i++){
+        printf("insira o nome, genero e ano de lancamento dos jogos\n");
+        scanf("%s", &jogos[i].Nome);
+        scanf("%s", &jogos[i].genero);
+        scanf("%d", &jogos[i].AnoLanc);
+
+
+    }
+
+    for(i=0;i<NumJogos;i++){
+        printf("jogo %d---- %s %s %d\n",i, jogos[i].Nome,jogos[i].genero,jogos[i].AnoLanc);
+    }
+
+
+
+}
