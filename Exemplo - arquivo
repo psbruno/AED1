@@ -33,7 +33,6 @@ int main(){
         fprintf(file, "%s\n",texto );
     }
     fclose(file);
-    //scanf("%s", &nomeBUSCA);
     busca(n);
     return 0;
 }
