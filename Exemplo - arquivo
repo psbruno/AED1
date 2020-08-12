@@ -4,7 +4,7 @@
 
 void busca(int n){
      FILE *file;
-     file = fopen("curincha.txt", "r");
+     file = fopen("teste1.txt", "r");
      int i;
      char texto[20];
     printf("\n");
@@ -21,11 +21,11 @@ void busca(int n){
 int main(){
     int i;
     FILE *file;
-    file = fopen("curincha.txt", "w");
+    file = fopen("teste1.txt", "w");
     char texto[20];
 
     int n;
-
+    printf("Insira o numero de nomes \n");
     scanf("%d", &n);
 
     for(i=0;i<n;i++){
@@ -33,7 +33,7 @@ int main(){
         fprintf(file, "%s\n",texto );
     }
     fclose(file);
-
+    //scanf("%s", &nomeBUSCA);
     busca(n);
     return 0;
 }
