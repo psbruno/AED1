@@ -14,6 +14,20 @@ typedef struct{
     TJogo *Colecao;
 }TDono;
 
+void imprime(TDono *dono){
+    TJogo *aux;
+    int i;
+    aux=dono->Colecao;
+
+    printf("dono: %s, idade: %d, numero de jogos: %d\n\n",dono->nome,dono->idade,dono->njogos);
+
+
+    for(i=0;i<dono->njogos;i++){
+        printf("jogo %d---- %s %s %d\n",i, aux[i].Nome,aux[i].genero,aux[i].AnoLanc);
+    }
+
+}
+
 int main(){
     TJogo *jogos;
     TDono *dono;
@@ -34,18 +48,13 @@ int main(){
     dono->Colecao=jogos;
 
     for(i=0;i<NumJogos;i++){
-        printf("insira o nome, genero e ano de lancamento dos jogos\n");
+        printf("insira o nome, genero e ano de lancamento dos jogo %d\n",i+1);
         scanf("%s", &jogos[i].Nome);
         scanf("%s", &jogos[i].genero);
         scanf("%d", &jogos[i].AnoLanc);
 
 
     }
-
-    for(i=0;i<NumJogos;i++){
-        printf("jogo %d---- %s %s %d\n",i, jogos[i].Nome,jogos[i].genero,jogos[i].AnoLanc);
-    }
-
-
-
+    imprime(dono);
+    return 0;
 }
