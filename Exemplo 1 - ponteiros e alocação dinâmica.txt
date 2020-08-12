@@ -1,0 +1,26 @@
+joao 1 1
+marcos 2 2
+maria 3 3
+joana 4 4
+pedro 5 5
+luan 6 6
+ricardo 7 7
+daniel 8 8
+pablo 9 9
+antonio 10 10
+
+
+marcelo 11 11
+cristiano 22 22
+lucas 33 33
+ronaldo 44 44
+tiago 55 55
+
+
+c1 cleber 111 111
+c3 claudia 222 222
+al angelo 333 333
+ga tadeu 444 444
+quimica maraisa 555 555
+circuitos cappa 666 666
+md kaufmann 777 777
